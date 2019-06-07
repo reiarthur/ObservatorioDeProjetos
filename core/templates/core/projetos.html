@@ -1,0 +1,7 @@
+<ul>
+
+    {% for projeto in projeto_list %}
+        <li><a href="{% url 'core:projeto_detail' projeto.id %}"> {{ projeto.nome }} </a></li>
+    {% endfor %}
+    
+</ul>

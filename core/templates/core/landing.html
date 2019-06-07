@@ -1,0 +1,8 @@
+<h1> landing page </h1>
+
+
+{% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">logout</a>
+{% else %} 
+    <a href="{% url "social:begin" "google-oauth2" %}">Login with Google</a>
+{% endif %}

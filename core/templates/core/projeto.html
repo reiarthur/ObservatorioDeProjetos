@@ -1,0 +1,184 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="content-grid mdl-grid">
+    <div class="mdl-cell mdl-cell--11-col">
+        <div class="projeto-heading">
+            <div class="projeto-nome">
+                <h4><span>Projeto: </span>{{ object.nome }}</h4>
+            </div>
+
+            <div class="projeto-fav">
+                {% if not favorito %}
+                <form id="favoritar-form" action="{% url 'core:favoritar' object.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="projeto" value="{{ object.id }}" />
+                    <a onClick="document.getElementById('favoritar-form').submit()">
+                        <div><span>Favoritar </span><i class="far fa-star fa-lg"></i></div>
+                    </a>
+                </form>
+                {% else %}
+                <form id="desfavoritar-form" action="{% url 'core:desfavoritar' object.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="projeto" value="{{ object.id }}" />
+                    <a onClick="document.getElementById('desfavoritar-form').submit()">
+                        <div><span>Desfavoritar </span><i class="fas fa-star fa-lg"></i></div>
+                    </a>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--1-offset mdl-cell--2-col mdl-cell--6-col-tablet">
+        <div class="campo-container">
+            <h6>Categoria</h6>
+            <p>{{ object.categoria.nome }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Data de início</h6>
+            <p>{{ object.data_inicio|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Valor aditado acumulado</h6>
+            <p>{{ object.valor_aditado|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Situação</h6>
+            <p>{{ object.situacao|default:"Desconhecido" }}</p>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">
+        <div class="campo-container">
+            <h6>Fase</h6>
+            <p>{{ object.fase.nome|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Prazo em dias</h6>
+            <p>{{ object.prazo_dias|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Valor medido no exercício</h6>
+            <p>{{ object.valor_medido_exercicio|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Descritivo</h6>
+            <p>{{ object.descritivo|default:"Desconhecido" }}</p>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">
+        <div class="campo-container">
+            <h6>Executora</h6>
+            <p>{{ object.executora|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Data de conclusão</h6>
+            <p>{{ object.data_conclusao|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Valores pagos no exercício</h6>
+            <p>{{ object.valor_pago_exercicio|default:"Desconhecido" }}</p>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">
+        <div class="campo-container">
+            <h6>Convênio</h6>
+            <p>{{ object.convevio|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Dias adiados</h6>
+            <p>{{ object.dias_adiados|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Valores pagos no período</h6>
+            <p>{{ object.valor_periodo|default:"Desconhecido" }}</p>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--6-col-tablet">
+        <div class="campo-container">
+            <h6>Contratada</h6>
+            <p> {{ object.contratada|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Valor contratado</h6>
+            <p>{{ object.valor_contratado|default:"Desconhecido" }}</p>
+        </div>
+        <div class="campo-container">
+            <h6>Soma dos valores pagos</h6>
+            <p>{{ object.soma_pagos|default:"Desconhecido" }}</p>
+        </div>
+    </div>
+</div>
+<div class="content-grid mdl-grid">
+    <div class="mdl-cell mdl-cell--7-col">
+        <div class="mdl-card mdl-shadow--2dp" id="comentarios-cell">
+            <div id="comentarios-box">
+                <form action="{% url 'core:comentar' object.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="texto" id="texto" />
+                    <input type="hidden" name="projeto" value="{{ object.id }}" />
+                    <input type="submit" value="Comentar" />
+                </form>
+
+                {% for comentario in comentarios %}
+
+                <div class="comentario-item">
+                    <div class="comentario-heading">
+                        <img src="https://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"
+                            class="comentario-item-user-picture" alt="">
+                            <div class="comentario-heading-text">
+                                <p class="comentario-user"> {{ comentario.user.first_name }} {{ comentario.user.last_name }} </p>
+                                <p class="comentario-date"> {{ comentario.created_at }} </p>
+
+                            </div>
+                    </div>
+                    <div class="comentario-body">
+                        {{ comentario.texto }}
+
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+{% comment %}
+<h1> {{ object.nome }} </h1>
+
+{% if not favorito %}
+<form id="favoritar-form" action="{% url 'core:favoritar' object.id %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="projeto" value="{{ object.id }}" />
+    <a onClick="document.getElementById('favoritar-form').submit()"> Favoritar </a>
+</form>
+{% else %}
+<form id="desfavoritar-form" action="{% url 'core:desfavoritar' object.id %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="projeto" value="{{ object.id }}" />
+    <a onClick="document.getElementById('desfavoritar-form').submit()"> Desfavoritar </a>
+</form>
+{% endif %}
+
+<form action="{% url 'core:comentar' object.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="texto" id="texto" />
+    <input type="hidden" name="projeto" value="{{ object.id }}" />
+    <input type="submit" value="Comentar" />
+</form>
+
+{% for comentario in comentarios %}
+
+<p>
+    {{comentario.user.first_name}} {{comentario.user.last_name}} comentou: {{ comentario.texto }}
+</p>
+
+{% endfor %}
+{% endcomment %}
+
+{% endblock %}

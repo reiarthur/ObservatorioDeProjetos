@@ -1,0 +1,283 @@
+header {
+	background-color: #000 !important;
+}
+
+.content-grid {
+	max-width: 1200px;
+}
+
+#column-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 85vh;
+}
+
+#profile-cell {
+	width: 100%;
+}
+
+#profile-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 16px 16px 32px 16px;
+}
+
+#profile-box img {
+	border-radius: 50%;
+	width: 100px;
+	margin: 16px;
+}
+
+#profile-box a {
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: .8em;
+	color: #000;
+	margin: 4px;
+}
+
+#projects-cell {
+	width: 100%;
+	margin-top: 24px;
+	flex-grow: 1;
+}
+
+#categories-box {
+	display: flex;
+	flex-direction: column;
+	padding: 16px 32px;
+	height: 100%;
+	box-sizing: border-box;
+
+}
+
+#categories-box h3 {
+	font-size: 1.3em;
+}
+
+#categories-box ul {
+	list-style-type: none;
+	font-weight: 300;
+	padding: 0;
+	margin: 0;
+}
+
+#categories-box ul li {
+	margin: 8px 0;
+}
+
+#categories-box ul li a {
+	color: #000;
+	text-decoration: none;
+	font-weight: 300;
+	font-size: 1.2em;
+
+}
+
+#categories-box ul li a:before {
+	content: "> ";
+}
+
+#categories-box .btn-new-project {
+	background-color: #000;
+	border-radius: 24px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: .8em;
+	padding-left: 32px;
+	padding-right: 32px;
+	margin: 32px auto;
+	color: #fff;
+}
+
+#feed-cell {
+	width: 100%;
+}
+
+#feed-cell .feed-item:not(:first-child) {
+	border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.feed-item .feed-item-wrapper {
+	padding: 32px;
+}
+
+.feed-item .feed-item-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.feed-item .feed-item-user-picture {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	margin-right: 24px;
+}
+
+.feed-item .feed-item-header-text a {
+	color: #000 !important;
+}
+
+.feed-item .feed-item-image {
+	height: 200px;
+	width: 100%;
+	background-image: url('http://fasubra.org.br/wp-content/uploads/images/2017/Janeiro/thumb-campus-da-ufrj-na-ilha-do-fundao1.jpg');
+	background-size: cover;
+	border-radius: 2px;
+}
+
+.feed-item .feed-item-footer {
+	margin-top: 24px;
+}
+
+.feed-item .feed-actions {
+	display: flex;
+}
+
+.feed-item .feed-actions .feed-action {
+	margin: 16px;
+}
+
+#recent-projects-cell {
+	width: 100%;
+	min-height: 85vh;
+}
+
+
+#recent-projects-box {
+	display: flex;
+	flex-direction: column;
+	padding: 16px 32px;
+}
+
+#recent-projects-box h3 {
+	font-size: 1.2em;
+	line-height: 1.2em;
+	font-weight: 300;
+}
+
+#recent-projects-box ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#recent-projects-box ul li .recent-project-item {
+	margin: 0 0 32px 0;
+}
+
+#recent-projects-box ul li .recent-project-item .project-title a {
+	color: #000 !important;
+}
+
+#recent-projects-box ul li .recent-project-item span:not(.project-tag) {
+	display: block;
+}
+
+#recent-projects-box ul li .recent-project-item .project-tags {
+	font-weight: 300;
+	font-size: 0.9em;
+	margin: 4px 0;
+}
+
+#recent-projects-box ul li .recent-project-item .project-tags span {
+	border: 1px #ccc solid;
+    background-color: #eee;
+    padding: 2px;
+    border-radius: 4px;
+    font-size: 0.8em;
+	box-shadow: inset -1px -1px 5px 0px rgba(0, 0, 0, 0.15);
+	margin: 0 8px 0 0;
+}
+
+.projeto-heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.projeto-heading .projeto-nome {
+	flex-basis: 50%
+}
+
+.projeto-heading h4 {
+	font-weight: 700;
+}
+
+.projeto-heading h4 span {
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+.projeto-fav form a {
+	color: #000;
+	font-size: 1.1em;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+
+.campo-container {
+	margin: 48px 0;
+}
+
+.campo-container h6 {
+    font-weight: 700;
+    font-size: .9em;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.campo-container p {
+    font-size: 1.3em;
+	font-weight: 300;
+}
+
+#comentarios-cell {
+	width: 100%;
+}
+
+#comentarios-box {
+	padding: 32px;
+}
+
+#comentarios-box input[type='text'] {
+	width: 100%;
+	height: 125px;
+}
+
+.comentario-item {
+	margin: 64px 0;
+}
+
+.comentario-heading {
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.comentario-heading .comentario-item-user-picture {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	margin-right: 24px;
+}
+
+.comentario-item .comentario-heading p {
+	margin: 0;
+}
+
+.comentario-item .comentario-heading .comentario-user {
+	font-size: 1.1em;
+	font-weight: 700;
+}
+
+.comentario-item .comentario-heading .comentario-date {
+	color: #999;
+	font-size: 0.9em;
+}

@@ -1,0 +1,121 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="content-grid mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--hide-tablet mdl-cell--hide-phone">
+
+        <div id="column-wrapper">
+            <!-- CARD PROFILE -->
+            <div class="mdl-card mdl-shadow--2dp" id="profile-cell">
+                <div id="profile-box">
+                    <img src="https://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
+                    <span>{{ user.first_name }} {{ user.last_name }}</span>
+                    <a href="#"> Editar perfil </a>
+                </div>
+            </div>
+
+            <!-- CARD PROJETOS -->
+            <div class="mdl-card mdl-shadow--2dp" id="projects-cell">
+                <div id="categories-box" class="shadow">
+                    <h3>Projetos</h3>
+                    <ul>
+                        <li><a href="">Saúde</a></li>
+                        <li><a href="">Educação</a></li>
+                        <li><a href="">Urbanização</a></li>
+                        <li><a href="">Lazer</a></li>
+                        <li><a href="">Turismo</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mdl-cell mdl-cell--6-col">
+        <!-- FEED CARD -->
+        <div class="mdl-card mdl-shadow--2dp" id="feed-cell">
+
+            {% for item in object_list %}
+            <div class="feed-item">
+                <div class="feed-item-wrapper">
+                    <div class="feed-item-header">
+                        <img src="https://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"
+                            class="feed-item-user-picture" alt="">
+                        <div class="feed-item-header-text">
+                            <div class="feed-item-activity">
+                                {{ item.user.first_name }} {{ item.user.last_name }}
+                                {{ item.acao_str }}
+                                <a href="{% url 'core:projeto_detail' item.projeto.id %}">
+                                    {{ item.projeto.nome_truncado }}
+                                </a>
+                            </div>
+                            <div class="feed-item-date">23 de maio</div>
+                        </div>
+                    </div>
+
+                    {% if item.texto %}
+                    <div class="feed-item-body">
+                        <div class="feed-item-comment">
+                            <p>
+                                {{ item.texto }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="feed-item-footer">
+                        <div class="feed-actions">
+                            <div class="feed-action"><i class="far fa-heart fa-lg"></i> <span>0</span></div>
+                            <div class="feed-action"><i class="far fa-thumbs-down fa-lg"></i> <span>0</span>
+                            </div>
+                            <div class="feed-action"><i class="far fa-comment-dots fa-lg"></i>
+                                <span>0</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--hide-tablet mdl-cell--hide-phone">
+        <div class="mdl-card mdl-shadow--2dp" id="recent-projects-cell">
+            <div id="recent-projects-box">
+                <h3>Projetos mais comentados no momento</h3>
+
+                <ul>
+                    {% for projeto in trend_projetos %}
+                    <li>
+                        <div class="recent-project-item">
+                            <span class="project-title">
+                                <a href="{% url 'core:projeto_detail' projeto.id %}">
+                                    {{ projeto.nome_truncado }}
+                                </a>
+                            </span>
+                            <div class="project-tags">
+
+                                {% if projeto.categoria %}
+                                <span class="project-tag">
+                                    {{ projeto.categoria.nome }}
+                                </span>
+                                {% endif %}
+
+                                {% if projeto.fase %}
+                                <span class="project-tag">
+                                    {{ projeto.fase.nome }}
+                                </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
