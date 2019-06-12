@@ -14,7 +14,7 @@ from itertools import chain
 # Create your views here.
 
 class LandingView(TemplateView):
-    template_name = 'core/landing.html'
+    template_name = 'core/login/login.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
